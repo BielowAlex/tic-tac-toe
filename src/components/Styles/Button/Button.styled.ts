@@ -8,7 +8,7 @@ export const ButtonStyled = styled.button`
   border-radius: 20px;
   font-weight: bolder;
   cursor: pointer;
-  font-size: 18px;
+  font-size: 22px;
   transition: all linear 0.2s;
 
   &:hover {

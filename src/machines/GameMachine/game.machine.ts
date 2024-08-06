@@ -120,11 +120,22 @@ export const gameMachine = createMachine<TicTacToeContext, TicTacToeEvent>(
 
           return result.status ? context.player : null;
         },
+        pattern: ({ context, event }) => {
+          if (event.type !== "MAKE_MOVE") return context.pattern;
+
+          const newBoard = context.board.slice();
+          newBoard[event.index] = context.player;
+
+          const result = isWin(newBoard, context.player);
+
+          return result.status ? result.pattern : context.pattern;
+        },
       }),
       resetBoard: assign(() => ({
         board: Array(9).fill(null),
         player: "X",
         winner: null,
+        pattern: [],
       })),
     },
     guards: {

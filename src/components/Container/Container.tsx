@@ -8,7 +8,7 @@ import { Board } from "../Board";
 
 const Container: React.FC = () => {
   const [state, send] = useMachine(gameMachine);
-  const { board, player, winner } = state.context;
+  const { board, player, winner, pattern } = state.context;
   const status: string = state.value as string;
 
   const handleStart = () => {
@@ -27,7 +27,12 @@ const Container: React.FC = () => {
   return (
     <ContainerStyled>
       <Status status={status} player={player} winner={winner as string} />
-      <Board board={board} status={status} handleClick={handleClick} />
+      <Board
+        pattern={pattern}
+        board={board}
+        status={status}
+        handleClick={handleClick}
+      />
       <BoardPanel
         status={status}
         handleStart={handleStart}

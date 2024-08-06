@@ -16,7 +16,7 @@ export const StatusMessageStyled = styled.div`
   text-align: center;
   gap: 10px;
   span {
-    font-size: 32px;
+    font-size: 22px;
     text-align: center;
     font-weight: normal;
   }

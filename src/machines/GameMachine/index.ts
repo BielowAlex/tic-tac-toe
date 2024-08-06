@@ -1,1 +1,1 @@
-export * from "./GameMachine.ts";
+export * from "./game.machine.ts";
