@@ -1,19 +1,16 @@
 @import url("https://fonts.googleapis.com/css2?family=Fira+Code:wght@300..700&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap");
-@import "variables/colors";
-@import "variables/mixins";
-@import "variables/global";
 @import "normalize";
 
 body {
   font-family: var(--font-family-main);
-  background: $back;
+  background: #3A3A3C;
   overflow-x: hidden;
-  color: $primary-text-color;
+  color: #FFFFFF;
 }
 
 span,h3,h4,h5{
-  color:$primary-subtext-color
+  color:#FFFFFF
 }
 
 section {
@@ -22,7 +19,7 @@ section {
 
 .container {
   width: 100%; // Займає всю доступну ширину
-  max-width: 1366px; // Максимальна ширина, щоб контент не був занадто широким на великих екранах
+  max-width: 1600px; // Максимальна ширина, щоб контент не був занадто широким на великих екранах
   margin: 0 auto; // Центрування контейнера шляхом автоматичного задання відступів з обох боків
   padding: 20px; // Відступ всередині контейнера, щоб вміст не прилягав безпосередньо до країв
   box-sizing: border-box; // Забезпечує, що padding і border враховуються в загальній ширині елемента
@@ -35,9 +32,7 @@ section {
   }
 }
 
-.red {
-  color: $deep-red;
-}
+
 * {
   font-family: "Fira Code", sans-serif;
   font-weight: 400;

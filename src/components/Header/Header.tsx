@@ -1,12 +1,13 @@
-import React from 'react';
-import style from './style.module.scss'
+import React from "react";
+import { HeaderStyled } from "./Header.styled.ts";
+import { Logo } from "../Logo";
 
 const Header: React.FC = () => {
-    return (
-        <header className={style.container}>
-            <h2>Im a header</h2>
-        </header>
-    );
+  return (
+    <HeaderStyled>
+      <Logo />
+    </HeaderStyled>
+  );
 };
 
-export {Header};
+export { Header };
