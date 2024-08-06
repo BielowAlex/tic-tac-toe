@@ -40,20 +40,21 @@ const isDraw = (board: (Player | null)[]): boolean => {
 
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-expect-error
+// Create the XState machine
 export const gameMachine = createMachine<TicTacToeContext, TicTacToeEvent>(
   {
     id: "ticTacToe",
     initial: "idle",
     context: {
-      board: Array(9).fill(null),
-      player: "X",
-      winner: null,
-      pattern: [],
+      board: Array(9).fill(null), // Initialize board with null values
+      player: "X", // Initial player is 'X'
+      winner: null, // No winner initially
+      pattern: [], // No winning pattern initially
     },
     states: {
       idle: {
         on: {
-          START: "playing",
+          START: "playing", // Transition to 'playing' state when 'START' event occurs
         },
       },
       playing: {
@@ -61,38 +62,38 @@ export const gameMachine = createMachine<TicTacToeContext, TicTacToeEvent>(
           MAKE_MOVE: [
             {
               target: "won",
-              guard: "checkWin",
-              actions: "updateBoard",
+              guard: "checkWin", // Transition to 'won' state if 'checkWin' guard is true
+              actions: "updateBoard", // Update board and context with the new move
             },
             {
               target: "draw",
-              guard: "checkDraw",
-              actions: "updateBoard",
+              guard: "checkDraw", // Transition to 'draw' state if 'checkDraw' guard is true
+              actions: "updateBoard", // Update board and context with the new move
             },
             {
               target: "playing",
-              actions: "updateBoard",
+              actions: "updateBoard", // Continue playing if neither win nor draw
             },
           ],
           RESET: {
-            target: "idle",
-            actions: "resetBoard",
+            target: "idle", // Transition back to 'idle' state when 'RESET' event occurs
+            actions: "resetBoard", // Reset the board and context
           },
         },
       },
       won: {
         on: {
           RESET: {
-            target: "idle",
-            actions: "resetBoard",
+            target: "idle", // Transition to 'idle' state when 'RESET' event occurs
+            actions: "resetBoard", // Reset the board and context
           },
         },
       },
       draw: {
         on: {
           RESET: {
-            target: "idle",
-            actions: "resetBoard",
+            target: "idle", // Transition to 'idle' state when 'RESET' event occurs
+            actions: "resetBoard", // Reset the board and context
           },
         },
       },
@@ -100,6 +101,7 @@ export const gameMachine = createMachine<TicTacToeContext, TicTacToeEvent>(
   },
   {
     actions: {
+      // Action to update the board, player, winner, and winning pattern
       updateBoard: assign({
         board: ({ context, event }) => {
           if (event.type !== "MAKE_MOVE") return context.board;
@@ -131,6 +133,7 @@ export const gameMachine = createMachine<TicTacToeContext, TicTacToeEvent>(
           return result.status ? result.pattern : context.pattern;
         },
       }),
+      // Action to reset the board and context
       resetBoard: assign(() => ({
         board: Array(9).fill(null),
         player: "X",
@@ -139,6 +142,7 @@ export const gameMachine = createMachine<TicTacToeContext, TicTacToeEvent>(
       })),
     },
     guards: {
+      // Guard to check if the move results in a win
       checkWin: ({
         context,
         event,
@@ -154,6 +158,7 @@ export const gameMachine = createMachine<TicTacToeContext, TicTacToeEvent>(
         const result = isWin(newBoard, context.player);
         return result.status;
       },
+      // Guard to check if the move results in a draw
       checkDraw: ({
         context,
         event,

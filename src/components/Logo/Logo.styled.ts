@@ -7,7 +7,7 @@ export const LogoStyled = styled.div`
   gap: 10px;
   cursor: default;
   h2 {
-    font-size: 20px;
+    font-size: 32px;
     font-weight: bold;
   }
 `;
