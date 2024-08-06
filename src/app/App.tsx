@@ -1,11 +1,11 @@
 import React from "react";
 import { MainLayout } from "../layouts";
-import { Board } from "../components";
+import { Container } from "../components";
 
 const App: React.FC = () => {
   return (
     <MainLayout>
-      <Board />
+      <Container />
     </MainLayout>
   );
 };

@@ -1,4 +1,4 @@
 export * from "./Header";
 export * from "./Logo";
-export * from "./Board";
+export * from "./Container";
 export * from "./Cell";

@@ -40,7 +40,7 @@ const isDraw = (board: (Player | null)[]): boolean => {
 
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-expect-error
-export const ticTacToeMachine = createMachine<TicTacToeContext, TicTacToeEvent>(
+export const gameMachine = createMachine<TicTacToeContext, TicTacToeEvent>(
   {
     id: "ticTacToe",
     initial: "idle",
