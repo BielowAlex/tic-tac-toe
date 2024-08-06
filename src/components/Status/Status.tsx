@@ -14,10 +14,10 @@ interface IProps {
 const Status: React.FC<IProps> = ({ status, player, winner }) => {
   return (
     <StatusStyled>
-      {/* Display a message prompting the user to press the play button when the game is idle */}
+      {/* Display a message prompting the user to start the game when idle */}
       {status === "idle" && (
         <StatusMessageStyled>
-          <span>Press the play button</span>
+          <span>Click "Play" to begin the game</span>
         </StatusMessageStyled>
       )}
 
@@ -25,7 +25,7 @@ const Status: React.FC<IProps> = ({ status, player, winner }) => {
       {status === "won" && (
         <StatusMessageStyled>
           <FontAwesomeIcon icon={faTrophy} />
-          <span>Player {winner} won!</span>
+          <span>Congratulations! Player {winner} has won the game!</span>
         </StatusMessageStyled>
       )}
 
@@ -33,14 +33,14 @@ const Status: React.FC<IProps> = ({ status, player, winner }) => {
       {status === "draw" && (
         <StatusMessageStyled>
           <FontAwesomeIcon icon={faHandshake} />
-          <span>Draw!</span>
+          <span>The game is a draw. Better luck next time!</span>
         </StatusMessageStyled>
       )}
 
       {/* Display the current player who needs to make a move when the game is in progress */}
       {status === "playing" && (
         <StatusMessageStyled>
-          <span>Move player {player}</span>
+          <span>It's player {player}'s turn. Make your move!</span>
         </StatusMessageStyled>
       )}
     </StatusStyled>
